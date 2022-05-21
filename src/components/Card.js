@@ -2,13 +2,13 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Cards = ({ title, imgSrc, description, id, item, cartItems }) => {
+const Cards = ({ title, imgSrc, description, id, item, setCartItems }) => {
   function ellipsis(string, start, end) {
     return string.substr(start, end);
   }
 
-  function handleClick(i) {
-    cartItems.push(i);
+  function handleClick(elem) {
+  setCartItems(prev=>[...prev,elem])
   }
 
   return (
@@ -22,7 +22,7 @@ const Cards = ({ title, imgSrc, description, id, item, cartItems }) => {
         <Button
           variant="primary"
           onClick={() => {
-            handleClick(item);
+           return handleClick(item);
           }}
         >
           Add to cart

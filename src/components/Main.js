@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import Cards from "./Card";
 import { Container, Row } from "react-bootstrap";
 import InfinitScroll from "react-infinite-scroll-component";
 
-const Main = ({ cartItems }) => {
+const Main = ({ cartItems,setCartItems }) => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -18,36 +18,23 @@ const Main = ({ cartItems }) => {
       }
     );
     let res = await api.json();
-    setData(res.items);
+    setData([...data,...res.items]);
+    setPage(page+1)
   }
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  async function fetchNextPage() {
-    let api = await fetch(
-      `http://api.products.luezoid.com/products?page=${page}`,
-      {
-        method: "Get",
-        headers: {
-          Authorization: "Bearer ULxG9gG98KDGPql/BFI/woCN9T8=",
-        },
-      }
-    );
-
-    let res = await api.json();
-    setPage(page + 1);
-    setData([...new Set(data.concat(res.items))]);
-  }
+ 
 
   return (
     <>
       <InfinitScroll
         dataLength={data.length}
-        next={fetchNextPage}
-        hasMore={data.length !== 0}
-        loader={<h4>Loading ... </h4>}
+        next={fetchData}
+        hasMore={true}
+        loader={<></>}
       >
         <Container className="my-3">
           <Row
@@ -59,7 +46,7 @@ const Main = ({ cartItems }) => {
               return (
                 <Cards
                   item={item}
-                  cartItems={cartItems}
+                  setCartItems={setCartItems}
                   key={item.id}
                   title={item.name}
                   imgSrc={item.bannerImage.url}
