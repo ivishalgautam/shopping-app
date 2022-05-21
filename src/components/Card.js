@@ -12,7 +12,12 @@ const Cards = ({ title, imgSrc, description, id, item, setCartItems }) => {
   }
 
   return (
-    <Card style={{ width: "15rem" }} className="mx-3 p-2">
+    <Card
+      style={{ width: "17rem" }}
+      className="mx-3 p-2"
+      bg="dark"
+      text="light"
+    >
       <Link to={"/itemDetails/" + id}>
         <Card.Img
           variant="top"

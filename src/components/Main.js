@@ -1,9 +1,9 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Cards from "./Card";
 import { Container, Row } from "react-bootstrap";
 import InfinitScroll from "react-infinite-scroll-component";
 
-const Main = ({ cartItems,setCartItems }) => {
+const Main = ({ cartItems, setCartItems }) => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -18,15 +18,13 @@ const Main = ({ cartItems,setCartItems }) => {
       }
     );
     let res = await api.json();
-    setData([...data,...res.items]);
-    setPage(page+1)
+    setData([...data, ...res.items]);
+    setPage(page + 1);
   }
 
   useEffect(() => {
     fetchData();
   }, []);
-
- 
 
   return (
     <>
@@ -35,6 +33,7 @@ const Main = ({ cartItems,setCartItems }) => {
         next={fetchData}
         hasMore={true}
         loader={<></>}
+        style={{ backgroundColor: "#000" }}
       >
         <Container className="my-3">
           <Row

@@ -4,6 +4,7 @@ import Main from "./components/Main.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetails from "./components/ItemDetails";
 import Cart from "./components/Cart.js";
+import Footer from "./components/Footer.js";
 
 const Home = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -17,6 +18,7 @@ const Home = () => {
         <Route exact path="/itemDetails/:id" element={<ItemDetails />} />
         <Route exact path="/cart" element={<Cart cartItems={cartItems} />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
