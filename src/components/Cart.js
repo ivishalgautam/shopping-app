@@ -7,10 +7,6 @@ const Cart = ({ cartItems }) => {
     return string.substr(start, end);
   }
 
-  function handleClick(elem) {
-    // console.log(elem);
-    cartItems.filter((item) => item.id !== elem.id);
-  }
   return (
     <>
       <Container className="my-3">
@@ -38,14 +34,6 @@ const Cart = ({ cartItems }) => {
                   <Card.Text>
                     {ellipsis(item.description, 0, 100) + "..."}
                   </Card.Text>
-                  <Button
-                    variant="primary"
-                    onClick={() => {
-                      return handleClick(item);
-                    }}
-                  >
-                    Remove
-                  </Button>
                 </Card.Body>
               </Card>
             );

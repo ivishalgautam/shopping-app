@@ -8,13 +8,17 @@ const Cards = ({ title, imgSrc, description, id, item, setCartItems }) => {
   }
 
   function handleClick(elem) {
-  setCartItems(prev=>[...prev,elem])
+    setCartItems((prev) => [...prev, elem]);
   }
 
   return (
     <Card style={{ width: "15rem" }} className="mx-3 p-2">
       <Link to={"/itemDetails/" + id}>
-        <Card.Img variant="top" src={imgSrc} style={{ aspectRatio: 16 / 9 }} />
+        <Card.Img
+          variant="top"
+          src={imgSrc}
+          style={{ width: "100%", aspectRatio: 16 / 9 }}
+        />
       </Link>
       <Card.Body>
         <Card.Title>{ellipsis(title, 0, 30)}</Card.Title>
@@ -22,7 +26,7 @@ const Cards = ({ title, imgSrc, description, id, item, setCartItems }) => {
         <Button
           variant="primary"
           onClick={() => {
-           return handleClick(item);
+            return handleClick(item);
           }}
         >
           Add to cart

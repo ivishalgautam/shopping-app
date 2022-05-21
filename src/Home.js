@@ -7,13 +7,13 @@ import Cart from "./components/Cart.js";
 
 const Home = () => {
   const [cartItems, setCartItems] = useState([]);
-  
-  console.log(cartItems);
+
+  // console.log(cartItems);
   return (
     <BrowserRouter>
       <Header cartItems={cartItems} />
       <Routes>
-        <Route exact path="/" element={<Main setCartItems={setCartItems}/>} />
+        <Route exact path="/" element={<Main setCartItems={setCartItems} />} />
         <Route exact path="/itemDetails/:id" element={<ItemDetails />} />
         <Route exact path="/cart" element={<Cart cartItems={cartItems} />} />
       </Routes>
