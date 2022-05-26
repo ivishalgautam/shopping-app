@@ -14,7 +14,11 @@ const Home = () => {
     <BrowserRouter>
       <Header cartItems={cartItems} />
       <Routes>
-        <Route exact path="/" element={<Main setCartItems={setCartItems} />} />
+        <Route
+          exact
+          path="/shopping-app"
+          element={<Main setCartItems={setCartItems} />}
+        />
         <Route exact path="/itemDetails/:id" element={<ItemDetails />} />
         <Route exact path="/cart" element={<Cart cartItems={cartItems} />} />
       </Routes>
